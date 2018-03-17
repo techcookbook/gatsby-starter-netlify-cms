@@ -65,7 +65,7 @@ That's it! We have now easily created a custom JavaScript snippet. Visual Code c
 
 Have fun creating as many snippets as you need and increasing your developer experience an productivity! 
 
-Happy Snippiting! 
+Happy Coding! 
 
 
 
