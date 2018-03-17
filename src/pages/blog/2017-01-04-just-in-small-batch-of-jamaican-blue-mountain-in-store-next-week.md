@@ -1,28 +1,77 @@
 ---
-templateKey: 'blog-post'
-title: 'Just in: small batch of Jamaican Blue Mountain in store next week'
-date: 2017-01-04T15:04:10.000Z
-description: >-
-  We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
-  Mountain coffee beans in our store next week.
+templateKey: blog-post
+title: Create Visual Code Code Snippets
+date: 2017-01-10T10:04:10-05:00
+description: Create custom snippets in Visual Code that can be invoked using a shortcut.
 ---
+We are going to create a JavaScript snippet that scaffolds a Promise construct:
 
-We expect the shipment of a limited quantity of green beans next Monday. We’ll be offering the roasted beans from Tuesday, but quantities are limited, so be quick.
+```js
+return new Promise((resolve, reject) => {
+    
+  });
+```
 
-Blue Mountain Peak is the highest mountain in Jamaica and one of the highest peaks in the Caribbean at 7,402 ft. It is the home of Blue Mountain coffee and their famous tours. It is located on the border of the Portland and Saint Thomas parishes of Jamaica.
+We are going to invoke this snippet by typing the word `newprom` in the editor.
 
-## A little history
+### What You Need
 
-The Blue Mountains are considered by many to be a hiker's and camper's paradise. The traditional Blue Mountain trek is a 7-mile hike to the peak and consists of a 3,000-foot increase in elevation. Jamaicans prefer to reach the peak at sunrise, thus the 3–4 hour hike is usually undertaken in darkness. Since the sky is usually very clear in the mornings, Cuba can be seen in the distance.
+* Installation of Visual Code
 
->Some of the plants found on the Blue Mountain cannot be found anywhere else in the world and they are often of a dwarfed sort.
+### Make It
 
-This is mainly due to the cold climate which inhibits growth. The small coffee farming communities of Claverty Cottage and Hagley Gap are located near the peak.
+Let's open the snippet file and edit it:
 
-## What you need to know before trying
+Windows:
 
-Jamaican Blue Mountain Coffee or Jamaica Blue Mountain Coffee is a classification of coffee grown in the Blue Mountains of Jamaica. The best lots of Blue Mountain coffee are noted for their mild flavor and lack of bitterness. Over the past few decades, this coffee has developed a reputation that has made it one of the most expensive and sought-after coffees in the world. Over 80% of all Jamaican Blue Mountain Coffee is exported to Japan. In addition to its use for brewed coffee, the beans are the flavor base of Tia Maria coffee liqueur.
+```text
+File > Preferences > User Snippets
+```
 
-Jamaican Blue Mountain Coffee is a globally protected certification mark, meaning only coffee certified by the Coffee Industry Board of Jamaica can be labeled as such. It comes from a recognized growing region in the Blue Mountain region of Jamaica, and its cultivation is monitored by the Coffee Industry Board of Jamaica.
+Mac: 
 
-The Blue Mountains are generally located between Kingston to the south and Port Antonio to the north. Rising 7,402 ft, they are some of the highest mountains in the Caribbean. The climate of the region is cool and misty with high rainfall. The soil is rich, with excellent drainage. This combination of climate and soil is considered ideal for coffee.
+```text
+Code > Preferences > User Snippets
+```
+
+Once the dropdown menu has opened choose *JavaScript*. `javascript.json` will open up. This file gives us some insight on the process:
+
+* We place our snippets in `javascript.json`. For other languages, we'd just replace `javascript` with the other language ID as defined by the Visual Code documentation. It's easier to access then through the menu. 
+* Each snippet is defined under a snippet name and has a prefix, body and a description on what the snippet does.
+* The prefix is used to invoke the code snippet - it is the typed shortcut.
+* Once invoked, the body is what is inserted in your active editor. 
+* You can define variables in the body of the snippet. $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the same ids are connected.
+  * You can also define variables to indicate choice and that represent a value to be resued within the snippet.
+
+To build the `console.log` snippet, we insert this property in the existing JSON object in the `javascript.json` file:
+
+```json
+{
+  "Create the body of a new Promise": {
+		"prefix": "newprom",
+		"body": [
+      "return new Promise((resolve, reject) => {",
+        " $0",
+      "});"
+		],
+		"description": "Log output to console"
+	}
+}
+```
+
+Since we want the cursor to end up indented within the curly braces, the second string in the `body` arrays is `" $0",`. This string explicitly indicates the whitespace that is to be included. You can create the indentation either pressing the tab key or the space bar - up to your preference! 
+
+That's it! We have now easily created a custom JavaScript snippet. Visual Code comes with some handy snippets already installed. We can also get pre-built bundles for a language in the Marketplace, or, as we've seen, we can create our own! 
+
+Have fun creating as many snippets as you need and increasing your developer experience an productivity! 
+
+Happy Snippiting! 
+
+
+
+
+
+
+
+
+
